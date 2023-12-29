@@ -9,6 +9,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 df = pd.read_csv('./predictive_maintenance.csv')
+print(df.head())
 
 df.drop(columns = ['Product ID'],inplace=True)
 df[(df['Target']==1)&(df['Failure Type']=='No Failure')]
@@ -36,7 +37,7 @@ def hello():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get JSON data from the request
+        
         data = request.get_json(force=True)
         print("Received data: ", data)
 
@@ -48,7 +49,6 @@ def predict():
         scaled_data = feature_scaler.transform(data)
         print("Scaled features: ", scaled_data)
 
-        # Reshape the scaled data to 2D array
         features = np.array(scaled_data, dtype=object).reshape(1, -1)
         print("Features: ", features)
 
@@ -56,7 +56,6 @@ def predict():
         return str(prediction)
 
     except Exception as e:
-        # Handle exceptions and return an error message
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':

@@ -5,12 +5,12 @@ def main():
 
     st.header("Predictive Maintenance")
 
-    input1 = st.text_input("Input 1")
-    input2 = st.text_input("Input 2")
-    input3 = st.text_input("Input 3")
-    input4 = st.text_input("Input 4")
-    input5 = st.text_input("Input 5")
-    input6 = st.text_input("Input 6")
+    input1 = st.text_input("Product Type")
+    input2 = st.text_input("Air Temperature (K)")
+    input3 = st.text_input("Process Temperature (K)")
+    input4 = st.text_input("Rotational Speed (RPM)")
+    input5 = st.text_input("Torque (Nm)")
+    input6 = st.text_input("Tool Wear (Minutes)")
 
     if st.button("Calculate"):
         output = calculate_output(input1, input2, input3, input4, input5, input6)
